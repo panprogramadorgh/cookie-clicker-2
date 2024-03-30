@@ -1,6 +1,25 @@
 .cookie {
+  /* --width: 400px;
+  --height: 400px;
+
+  width: var(--width);
+  height: var(--height); */
   position: relative;
   border-radius: 100%;
   background-color: var(--cookie-bg-color-rgb);
   user-select: none;
 }
+
+/* @media only screen and (max-width: 800px) {
+  .cookie {
+    --width: 300px;
+    --height: 300px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .cookie {
+    --width: 250px;
+    --height: 250px;
+  }
+} */

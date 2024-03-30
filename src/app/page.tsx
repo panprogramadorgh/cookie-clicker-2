@@ -1,51 +1,49 @@
-"use client";
-
 /* Imports */
 
 // react & nextjs
-import { FC, useContext, lazy } from "react";
+import { FC, useEffect, useState } from "react";
 
 // components
-// import Cookie from "@/ui/components/Cookie/Cookie";
+import Phrases from "@/ui/components/Home/Phrases";
+import Cookie from "@/ui/components/Cookie/Cookie";
+import Link from "next/link";
+import Header from "@/ui/components/Generic/Header/Header";
 
 // libs
-import { motion } from "framer-motion";
 
 // utils
-import { GameContext } from "@/ui/contexts/Game";
 
 // types & interfaces
 
 // css
-import styles from "./page.module.css";
+import styles from "@/app/page.module.css";
 
-const Cookie = lazy(() => import("@/ui/components/Cookie/Cookie"));
+interface Props {}
 
-const Home: FC = () => {
-  const gameContext = useContext(GameContext);
-
-  if (gameContext === null) return;
+const Home: FC<Props> = ({}) => {
   return (
     <>
-      <header className={styles.header}>
-        <h1>Cookie Clicker</h1>
-      </header>
+      <Header />
       <main className={styles.main}>
-        <div className={styles["game-stats"]}>
-          <p>
-            Cookies: <span>{gameContext[0].cookies}</span>
-          </p>
-          <p>
-            Chips: <span>{gameContext[0].chips}</span>
-          </p>
-        </div>
-        <div className={styles["cookie-container"]}>
-          <Cookie
-            key={gameContext[0].cookies}
-            size={400}
-            chipsAmount={{ max: 6, min: 3 }}
-          />
-        </div>
+        <section className={styles["phrases-container"]}>
+          <Phrases switchDelay={3000} />
+        </section>
+        <section className={styles["explication"]}>
+          <div className={styles["explication__cookie-container"]}>
+            <Cookie chipsAmount={{ min: 3, max: 6 }} decorative size={250} />
+          </div>
+          <div className={styles["explication__text-container"]}>
+            <p>
+              To play simply <span>click on the cookies and their chips</span>.
+              With cookies and chips you can <span> buy gadgets</span> that will
+              allow you to <span>boost your earnings</span> from cookies and
+              chips.
+            </p>
+          </div>
+        </section>
+        <section className={styles["play"]}>
+          <Link href="/game">Play Game</Link>
+        </section>
       </main>
     </>
   );

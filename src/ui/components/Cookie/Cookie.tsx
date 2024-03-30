@@ -3,7 +3,14 @@
 /* Imports */
 
 // react & nextjs
-import { FC, useState, useEffect, useContext, MouseEventHandler } from "react";
+import {
+  FC,
+  useState,
+  useEffect,
+  useContext,
+  MouseEventHandler,
+  useCallback,
+} from "react";
 
 // components
 import Chip from "@/ui/components/Cookie/Chip/Chip";
@@ -20,8 +27,10 @@ import type { ChipI } from "@/utils/Cookie/types";
 
 // css
 import styles from "@/ui/components/Cookie/Cookie.module.css";
+import { GameStateValueI } from "@/utils/Contexts/Game";
 
 interface Props {
+  decorative?: boolean;
   size: number;
   chipsAmount: {
     max: number;
@@ -29,7 +38,7 @@ interface Props {
   };
 }
 
-const Cookie: FC<Props> = ({ size, chipsAmount }) => {
+const Cookie: FC<Props> = ({ decorative = false, size, chipsAmount }) => {
   const [client, setClient] = useState(false);
   useEffect(() => {
     setClient(true);
@@ -38,29 +47,35 @@ const Cookie: FC<Props> = ({ size, chipsAmount }) => {
   /* game context logic */
   const gameContext = useContext(GameContext);
 
-  const addCookie = () => {
+  const addCookie = useCallback(() => {
     if (gameContext === null) return;
     const [_, setGameStateValue] = gameContext;
     setGameStateValue((prev) => {
+      if (!prev) return null;
       return { ...prev, cookies: prev.cookies + 1 };
     });
-  };
+  }, [gameContext]);
 
-  const handleCookieClick: MouseEventHandler<HTMLDivElement> = (event) => {
-    event.stopPropagation();
-    addCookie();
-  };
+  const handleCookieClick: MouseEventHandler<HTMLDivElement> =
+    useCallback(() => {
+      const grabCookieSound = new Audio("/sounds/cookie/grab_cookie.mp3");
+      grabCookieSound.play();
+      if (!decorative) return addCookie(); // Agregas una cookie si no es decorativo
+    }, [addCookie]);
 
   /* ------- Chips state logic ------- */
   const [chips, setChips] = useState<ChipI[]>([]);
 
-  const removeChipPerId = (id: number) => {
-    let newChipsPosition = [...chips];
-    newChipsPosition = newChipsPosition.filter((chip) => {
-      if (chip.id !== id) return chip;
-    });
-    setChips(newChipsPosition);
-  };
+  const removeChipPerId = useCallback(
+    (id: number) => {
+      let newChipsPosition = [...chips];
+      newChipsPosition = newChipsPosition.filter((chip) => {
+        if (chip.id !== id) return chip;
+      });
+      setChips(newChipsPosition);
+    },
+    [chips]
+  );
 
   useEffect(() => {
     try {
@@ -77,20 +92,29 @@ const Cookie: FC<Props> = ({ size, chipsAmount }) => {
     }
   }, []);
 
-  const handleChipClick = (event: MouseEvent, id: number) => {
-    event.stopPropagation(); // Avoids the event for the cookie component
-    if (!gameContext) return;
-    const [_, setGameStateValue] = gameContext;
-    setGameStateValue((prev) => {
-      return { ...prev, chips: prev.chips + 1 };
-    });
-    removeChipPerId(id); // Removes the chip
-  };
+  const handleChipClick = useCallback(
+    (event: MouseEvent, id: number) => {
+      event.stopPropagation(); // Avoids the event for the cookie component
+      const grabChipSound = new Audio("/sounds/cookie/grab_chip.mp3");
+      grabChipSound.play();
+      if (!gameContext) return;
+      // Elimina la chip solo si no es decorativo
+      if (!decorative) {
+        const [_, setGameStateValue] = gameContext;
+        setGameStateValue((prev) => {
+          if (!prev) return null;
+          return { ...prev, chips: prev.chips + 1 };
+        });
+        removeChipPerId(id); // Removes the chip
+      }
+    },
+    [gameContext, removeChipPerId]
+  );
 
   /* -------------------------- */
 
   // No se renderiza nada hasta el tiempo de reconcilizacion donde se establece el valor para el contexto
-  if (!client || gameContext === null) return;
+  if (!client || gameContext === null || gameContext[0] === null) return;
   return (
     <motion.div
       className={styles.cookie}
@@ -104,11 +128,8 @@ const Cookie: FC<Props> = ({ size, chipsAmount }) => {
         rotate: 360,
       }}
       transition={{
-        duration: 0.15,
-        type: "spring",
-        damping: 25,
-        stiffness: 500,
-
+        width: {},
+        height: {},
         scale: {
           duration: 0.2,
         },
@@ -123,8 +144,7 @@ const Cookie: FC<Props> = ({ size, chipsAmount }) => {
         return (
           <Chip
             key={chip.id}
-            size={size}
-            position={{ xPos: chip.pos.xPos, yPos: chip.pos.yPos }}
+            position={{ x: chip.pos.x, y: chip.pos.y }}
             handleClick={(event: any) => handleChipClick(event, chip.id)}
           />
         );

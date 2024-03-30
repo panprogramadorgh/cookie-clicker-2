@@ -11,18 +11,17 @@ import { motion } from "framer-motion";
 // utils
 
 // types & interfaces
-import type { ChipPosI } from "@/utils/Cookie/types";
+import type { TwoDimension } from "@/utils/types";
 
 // css
 import styles from "@/ui/components/Cookie/Chip/Chip.module.css";
 
 interface Props {
-  size: number;
-  position: ChipPosI;
+  position: TwoDimension;
   handleClick: MouseEventHandler;
 }
 
-const Chip: FC<Props> = ({ size, position, handleClick }) => {
+const Chip: FC<Props> = ({ position, handleClick }) => {
   return (
     <motion.div
       onClick={handleClick}
@@ -32,10 +31,8 @@ const Chip: FC<Props> = ({ size, position, handleClick }) => {
       }}
       initial={{
         scale: 0,
-        width: size / 5,
-        height: size / 5,
-        top: `${position.yPos}%`,
-        left: `${position.xPos}%`,
+        top: `${position.y}%`,
+        left: `${position.x}%`,
       }}
       animate={{
         scale: 1,

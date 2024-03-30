@@ -1,9 +1,6 @@
-export interface ChipPosI {
-  xPos: number;
-  yPos: number;
-}
+import { TwoDimension } from "@/utils/types";
 
 export interface ChipI {
   id: number;
-  pos: ChipPosI;
+  pos: TwoDimension;
 }

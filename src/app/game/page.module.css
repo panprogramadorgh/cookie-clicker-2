@@ -1,0 +1,44 @@
+.main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.header {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header h1 {
+  --header-title-font-size: var(--font-size-title);
+  font-size: var(--header-title-font-size);
+}
+
+.game-stats {
+  /* width: 200px; */
+  height: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 15px;
+}
+.cookies,
+.chips {
+  font-size: var(--font-size-big);
+}
+.cookies > span::before {
+  content: "Cookies:";
+  margin-right: 15px;
+}
+.chips > span::before {
+  content: "Chips:";
+  margin-right: 15px;
+}
+
+@media only screen and (max-width: 470px) {
+  .header h1 {
+    --header-title-font-size: var(--font-size-large);
+  }
+}

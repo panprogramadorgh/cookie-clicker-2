@@ -6,6 +6,6 @@ export interface GameStateValueI {
 }
 
 export type GameStateI = [
-  GameStateValueI,
-  Dispatch<SetStateAction<GameStateValueI>>
+  GameStateValueI | null,
+  Dispatch<SetStateAction<GameStateValueI | null>>
 ];

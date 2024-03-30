@@ -1,4 +1,5 @@
-import type { ChipI, ChipPosI } from "@/utils/Cookie/types";
+import type { ChipI } from "@/utils/Cookie/types";
+import { TwoDimension } from "@/utils/types";
 
 export const getRandom = (max: number, min: number): number => {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -15,7 +16,7 @@ export const getRandomChipsPos = (
   for (let i = 0; i < numChips; i++) {
     // Se inserta una chip por ciclo
 
-    const calculateChipPos = (): ChipPosI => {
+    const calculateChipPos = (): TwoDimension => {
       const xChipPos = getRandom(maxPos, minPos);
       const yChipPos = getRandom(maxPos, minPos);
 
@@ -23,15 +24,15 @@ export const getRandomChipsPos = (
       for (let currentChip of chips) {
         if (
           Math.abs(maxPos - minPos) / spaceBetween >
-            Math.abs(xChipPos - currentChip.pos.xPos) ||
+            Math.abs(xChipPos - currentChip.pos.x) ||
           Math.abs(maxPos - minPos) / spaceBetween >
-            Math.abs(yChipPos - currentChip.pos.yPos)
+            Math.abs(yChipPos - currentChip.pos.y)
         ) {
           return calculateChipPos();
         }
       }
 
-      return { xPos: xChipPos, yPos: yChipPos };
+      return { x: xChipPos, y: yChipPos };
     };
     chips.push({ id: chips.length, pos: calculateChipPos() });
   }
