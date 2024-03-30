@@ -1,0 +1,6 @@
+.cookie {
+  position: relative;
+  border-radius: 100%;
+  background-color: var(--cookie-bg-color-rgb);
+  user-select: none;
+}

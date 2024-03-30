@@ -1,0 +1,5 @@
+.chip {
+  position: absolute;
+  border-radius: 100%;
+  background-color: var(--chip-bg-color-rgb);
+}
