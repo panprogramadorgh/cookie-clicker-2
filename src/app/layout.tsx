@@ -8,8 +8,8 @@ import GameContextProvider from "@/ui/contexts/Game";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cookie clicker 2 !",
-  description: "Segunda version del videojuego basado en cookie clicker",
+  title: "Cookie Clicker",
+  description: "Cookie clicker the videogame. Tap to get cookies and chips",
 };
 
 export default function RootLayout({
@@ -19,9 +19,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GameContextProvider>
-        <body className={inter.className}>{children}</body>
-      </GameContextProvider>
+      <head>
+        <link
+          rel="shortcut icon"
+          href="/imgs/favicon.ico"
+          type="image/x-icon"
+        />
+      </head>
+      <body className={inter.className}>
+        <GameContextProvider>{children}</GameContextProvider>
+      </body>
     </html>
   );
 }

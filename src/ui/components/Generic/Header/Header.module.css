@@ -1,11 +1,12 @@
 .header {
-  height: 150px;;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 30px;
+  user-select: none;
 }
 .header h1 {
   font-weight: 400;
   text-align: center;
-  user-select: none;
 }

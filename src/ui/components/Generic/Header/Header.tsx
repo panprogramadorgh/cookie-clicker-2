@@ -5,6 +5,7 @@ import { FC } from "react";
 
 // components
 import Link from "next/link";
+import Image from "next/image";
 
 // libs
 
@@ -23,6 +24,12 @@ const Header: FC<Props> = ({}) => {
       <Link href="/">
         <h1>Cookie Clicker</h1>
       </Link>
+      <Image
+        width={65}
+        height={65}
+        src="/imgs/cookie.png"
+        alt="image of a cookie"
+      />
     </header>
   );
 };

@@ -6,8 +6,8 @@
 import { FC, useContext, lazy } from "react";
 
 // components
-import Header from "@/ui/components/Generic/Header/Header";
 import Cookie from "@/ui/components/Cookie/Cookie";
+import Header from "@/ui/components/Generic/Header/Header";
 
 // libs
 

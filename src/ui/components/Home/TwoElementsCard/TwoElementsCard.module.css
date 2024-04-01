@@ -1,0 +1,7 @@
+/* Estilos fijos para el article de framer motion */
+
+.card__content__text-container__article {
+  user-select: none;
+  border-radius: var(--border-radius);
+  padding: 15px;
+}

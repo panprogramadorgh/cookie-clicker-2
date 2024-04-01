@@ -12,11 +12,12 @@ import { FC, useState, useEffect } from "react";
 // utils
 import { motion } from "framer-motion";
 import phrases from "@/utils/Home/phrases";
+import { phrasesVariants } from "@/utils/Home/framerMotionVariants";
 
 // types & interfaces
 
 // css
-import styles from "@/ui/components/Home/Phrases.module.css";
+import styles from "@/ui/components/Home/Phrases/Phrases.module.css";
 
 function getPhraseByIndex(index: number): (typeof phrases)[0] {
   return phrases[index];
@@ -46,22 +47,10 @@ const Phrases: FC<Props> = ({ switchDelay }) => {
     <motion.div
       key={phraseIndex}
       className={styles["phrase"]}
-      initial={{ y: 15, scale: 0.95, opacity: 0 }}
-      animate={{ y: 0, scale: 1, opacity: 1 }}
-      transition={{
-        y: {
-          duration: 0.2,
-          type: "spring",
-          damping: 50,
-          stiffness: 700,
-        },
-        scale: {
-          duration: 0.2,
-          type: "spring",
-          damping: 50,
-          stiffness: 700,
-        },
-      }}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={phrasesVariants}
     >
       <h2>
         <span>{getPhraseByIndex(phraseIndex)}</span>

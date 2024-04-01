@@ -1,5 +1,5 @@
-import type { ChipI } from "@/utils/Cookie/types";
-import { TwoDimension } from "@/utils/types";
+import type { ChipI } from "@/utils/definitions";
+import { TwoDimension } from "@/utils/definitions";
 
 export const getRandom = (max: number, min: number): number => {
   return Math.floor(Math.random() * (max - min)) + min;

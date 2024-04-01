@@ -1,6 +1,7 @@
 .phrase {
   height: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -8,7 +9,6 @@
   font-size: var(--font-size-title);
   font-weight: 400;
   text-align: center;
-  user-select: none;
 }
 
 @media only screen and (max-width: 600px) {

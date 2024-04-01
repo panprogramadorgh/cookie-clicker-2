@@ -6,6 +6,16 @@
   align-items: center;
 }
 
+.card {
+  background-color: var(--background);
+  padding: 35px;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -15,6 +25,5 @@
   height: 60px;
   width: 1px;
   margin: 0 20px;
-  background-color: rgb(var(--background-rgb));
-
+  background-color: var(--text-muted);
 }
