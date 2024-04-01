@@ -12,7 +12,7 @@ import { FC, createContext, useState, useEffect } from "react";
 // utils
 
 // types & interfaces
-import type { GameStateValueI, GameStateI } from "@/utils/Contexts/Game";
+import type { GameStateValueI, GameStateI } from "@/utils/definitions";
 
 // csss
 

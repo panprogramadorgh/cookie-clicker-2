@@ -23,11 +23,11 @@ import { getRandomChipsPos, getRandom } from "@/utils/Cookie/random";
 import { GameContext } from "@/ui/contexts/Game";
 
 // types & interfaces
-import type { ChipI } from "@/utils/Cookie/types";
+import type { ChipI } from "@/utils/definitions";
 
 // css
 import styles from "@/ui/components/Cookie/Cookie.module.css";
-import { GameStateValueI } from "@/utils/Contexts/Game";
+import { GameStateValueI } from "@/utils/definitions";
 
 interface Props {
   decorative?: boolean;

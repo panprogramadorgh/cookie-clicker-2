@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 // utils
 
 // types & interfaces
-import type { TwoDimension } from "@/utils/types";
+import type { TwoDimension } from "@/utils/definitions";
 
 // css
 import styles from "@/ui/components/Cookie/Chip/Chip.module.css";
