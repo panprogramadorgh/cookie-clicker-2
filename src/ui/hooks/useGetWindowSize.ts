@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { TwoDimension } from "@/utils/types";
+import { TwoDimension } from "@/utils/definitions";
 
 export default function useGetWindowSize(): TwoDimension | null {
   const [windowSize, setWindowSize] = useState<TwoDimension | null>(null);
