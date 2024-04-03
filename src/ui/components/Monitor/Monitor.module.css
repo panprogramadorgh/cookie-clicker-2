@@ -1,0 +1,41 @@
+.monitor {
+  min-width: 500px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  background-color: var(--background);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  align-items: center;
+  background-color: var(--background-alt);
+  border-radius: var(--border-radius);
+  padding: 2px 1px;
+  margin: 10px 0;
+  font-size: var(--font-size-big);
+}
+.stat * {
+  flex-grow: 1;
+  font-size: inherit;
+}
+.stat > p {
+  text-align: start;
+  margin-right: 10px;
+}
+.stat > span {
+  text-align: end;
+}
+
+@media only screen and (max-width: 500px) {
+  .monitor {
+    width: 100%;
+    min-width: auto;
+  }
+}

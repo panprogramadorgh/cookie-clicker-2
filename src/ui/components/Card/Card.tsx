@@ -12,19 +12,29 @@ import { FC } from "react";
 // types & interfaces
 
 // css
-import styles from "@/ui/components/Home/Card/Card.module.css";
+import styles from "@/ui/components/Card/Card.module.css";
 
 interface Props {
   title: string;
   element: React.ReactNode;
   text: string | React.ReactNode;
+  minCardContentHeight?: number;
 }
 
-const Card: FC<Props> = ({ title, element, text }) => {
+const Card: FC<Props> = ({ title, element, text, minCardContentHeight }) => {
   return (
     <div className={styles["card"]}>
       <h2 className={styles["card__title"]}>{title}</h2>
-      <div className={styles["card__content"]}>
+      <div
+        className={styles["card__content"]}
+        style={
+          minCardContentHeight
+            ? {
+                minHeight: minCardContentHeight,
+              }
+            : undefined
+        }
+      >
         <div className={styles["card__content__element-container"]}>
           {element}
         </div>

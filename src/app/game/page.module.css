@@ -1,50 +1,22 @@
 .main {
+  width: 100%;
+  height: calc(100vh - 150px);
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
 }
-.header {
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.header h1 {
-  --header-title-font-size: var(--font-size-title);
-  font-size: var(--header-title-font-size);
+
+.buttons-container {
+  width: 100%;
+  padding: 0 3rem;
 }
 
-.game-stats {
-  /* width: 200px; */
-  height: 200px;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  /* align-items: center; */
-  gap: 15px;
-}
-.cookies,
-.chips {
-  font-size: var(--font-size-big);
-}
-.cookies > span::before {
-  content: "Cookies:";
-  margin-right: 15px;
-}
-.chips > span::before {
-  content: "Chips:";
-  margin-right: 15px;
-}
-
-.main .cookie-container {
-  display: flex;
-  align-items: flex-start;
-  height: 600px;
-}
-
-@media only screen and (max-width: 470px) {
+@media only screen and (max-width: 500px) {
   .header h1 {
     --header-title-font-size: var(--font-size-large);
+  }
+  .main {
+    width: 90%;
   }
 }

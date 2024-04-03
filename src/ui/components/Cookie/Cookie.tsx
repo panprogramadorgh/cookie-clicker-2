@@ -13,21 +13,20 @@ import {
 } from "react";
 
 // components
-import Chip from "@/ui/components/Cookie/Chip/Chip";
+import Chip from "@/ui/components/Chip/Chip";
 
 // libs
 import { motion } from "framer-motion";
 
 // utils
-import { getRandomChipsPos, getRandom } from "@/utils/Cookie/random";
-import { GameContext } from "@/ui/contexts/Game";
+import { getRandomChipsPos, getRandom } from "@/utils/cookieRandom";
+import { GameContext } from "@/ui/contexts/GameContext";
 
 // types & interfaces
 import type { ChipI } from "@/utils/definitions";
 
 // css
 import styles from "@/ui/components/Cookie/Cookie.module.css";
-import { GameStateValueI } from "@/utils/definitions";
 
 interface Props {
   decorative?: boolean;
@@ -114,7 +113,10 @@ const Cookie: FC<Props> = ({ decorative = false, size, chipsAmount }) => {
   /* -------------------------- */
 
   // No se renderiza nada hasta el tiempo de reconcilizacion donde se establece el valor para el contexto
-  if (!client || gameContext === null || gameContext[0] === null) return;
+  if (!client) return null;
+  else if (decorative) {
+    // Sigue normalmente con el codigo
+  } else if (!gameContext || !gameContext[0]) return null;
   return (
     <motion.div
       className={styles.cookie}

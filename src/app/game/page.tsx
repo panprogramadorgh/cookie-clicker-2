@@ -6,41 +6,30 @@
 import { FC, useContext, lazy } from "react";
 
 // components
-import Cookie from "@/ui/components/Cookie/Cookie";
-import Header from "@/ui/components/Generic/Header/Header";
+const Cookie = lazy(() => import("@/ui/components/Cookie/Cookie"));
 
 // libs
 
 // utils
-import { GameContext } from "@/ui/contexts/Game";
+import { GameContext } from "@/ui/contexts/GameContext";
 import useGetWindowSize from "@/ui/hooks/useGetWindowSize";
 
 // types & interfaces
 
 // css
 import styles from "@/app/game/page.module.css";
+import { TwoDimension } from "@/utils/definitions";
 
-const calculateCookieSize = (winWidth: number) => {
-  if (winWidth > 800) {
-    return 500;
-  } else if (winWidth > 600) {
-    return 450;
-  } else if (winWidth > 500) {
+const calculateCookieSize = (winSize: TwoDimension) => {
+  if (winSize.x < 500) {
+    return winSize.x * 0.9;
+  } else if (winSize.x < 600) {
     return 350;
-  } else if (winWidth > 400) {
-    return 300;
+  } else if (winSize.x < 720) {
+    return 400;
   } else {
-    return 250;
+    return 400;
   }
-};
-
-const getCookieKeyHash = (
-  cookiesAmount: number,
-  winWidth: number
-): `${number}-${number}` => {
-  const cookieWidth = calculateCookieSize(winWidth);
-  const hash: `${number}-${number}` = `${cookiesAmount}-${cookieWidth}`;
-  return hash;
 };
 
 const Home: FC = () => {
@@ -49,27 +38,16 @@ const Home: FC = () => {
 
   if (gameContext === null || gameContext[0] === null || windowSize === null)
     return null;
-  const cookieSize = calculateCookieSize(windowSize.x);
+  const cookieSize = calculateCookieSize(windowSize);
   return (
     <>
-      <Header />
-      <main className={styles.main}>
-        <div className={styles["game-stats"]}>
-          <p className={styles.cookies}>
-            <span>{gameContext[0].cookies}</span>
-          </p>
-          <p className={styles.chips}>
-            <span>{gameContext[0].chips}</span>
-          </p>
-        </div>
-        <div className={styles["cookie-container"]}>
-          <Cookie
-            key={getCookieKeyHash(gameContext[0].cookies, windowSize.x)}
-            size={cookieSize}
-            chipsAmount={{ max: 6, min: 3 }}
-          />
-        </div>
-      </main>
+      <div className={styles["cookie-container"]}>
+        <Cookie
+          key={gameContext[0].cookies + calculateCookieSize(windowSize)}
+          size={cookieSize}
+          chipsAmount={{ max: 6, min: 3 }}
+        />
+      </div>
     </>
   );
 };

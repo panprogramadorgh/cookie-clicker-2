@@ -14,7 +14,7 @@ import Image from "next/image";
 // types & interfaces
 
 // css
-import styles from "@/ui/components/Generic/Header/Header.module.css";
+import styles from "@/ui/components/Header/Header.module.css";
 
 interface Props {}
 
@@ -24,7 +24,7 @@ const Header: FC<Props> = ({}) => {
       <Link href="/">
         <h1>Cookie Clicker</h1>
       </Link>
-      <Image
+      <img
         width={65}
         height={65}
         src="/imgs/cookie.png"

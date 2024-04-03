@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import type { TwoDimension } from "@/utils/definitions";
 
 // css
-import styles from "@/ui/components/Cookie/Chip/Chip.module.css";
+import styles from "@/ui/components/Chip/Chip.module.css";
 
 interface Props {
   position: TwoDimension;

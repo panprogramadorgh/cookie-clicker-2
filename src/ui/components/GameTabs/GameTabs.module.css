@@ -1,0 +1,14 @@
+.game-tabs {
+  width: 100%;
+  font-size: var(--font-size-medium);
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 0 3%;
+}
+
+.game-tabs a {
+  padding: 20px;
+  background-color: var(--background);
+  border-radius: var(--border-radius);
+}

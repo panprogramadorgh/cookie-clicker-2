@@ -13,7 +13,7 @@ import Link from "next/link";
 // types & interfaces
 
 // css
-import styles from "@/ui/components/Home/TwoElementsCard/Local/Local.module.css";
+import styles from "@/ui/components/LocalGameMode/LocalGameMode.module.css";
 
 interface Props {}
 

@@ -11,13 +11,13 @@ import { FC, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 // utils
-import { twoElementCardVariants } from "@/utils/Home/framerMotionVariants";
+import { twoElementCardVariants } from "@/utils/framerMotionVariants";
 
 // types & interfaces
 
 // css
-import cardStyles from "@/ui/components/Home/Card/Card.module.css";
-import styles from "@/ui/components/Home/TwoElementsCard/TwoElementsCard.module.css";
+import cardStyles from "@/ui/components/Card/Card.module.css";
+import styles from "@/ui/components/TwoElementsCard/TwoElementsCard.module.css";
 
 const enum GameModes {
   local,
@@ -43,26 +43,36 @@ const GameModesCard: FC<Props> = ({ title, firstElement, seccondElement }) => {
     setGameMode(GameModes.local);
   }, []);
 
+  const calculateVariant = (targetGameMode: GameModes) => {
+    return targetGameMode === gameMode
+      ? twoElementCardVariants.active
+      : twoElementCardVariants.unactive;
+  };
+
+  const handleClick = (targetGameMode: GameModes): void => {
+    setGameMode(targetGameMode);
+  };
+
+  const calculateVisibleElement = () => {
+    return gameMode === GameModes.local
+      ? firstElement.element
+      : seccondElement.element;
+  };
+
   return (
     <div className={cardStyles["card"]}>
       <h2 className={cardStyles["card__title"]}>{title}</h2>
       <div className={cardStyles["card__content"]}>
         <div className={cardStyles["card__content__element-container"]}>
-          {gameMode === GameModes.local
-            ? firstElement.element
-            : seccondElement.element}
+          {calculateVisibleElement()}
         </div>
         <div className={cardStyles["card__content__text-container"]}>
           <motion.article
             className={styles["card__content__text-container__article"]}
-            onClick={() => setGameMode(GameModes.local)}
+            onClick={() => handleClick(GameModes.local)}
             initial="hidden"
             animate="visible"
-            variants={
-              gameMode === GameModes.local
-                ? twoElementCardVariants.active
-                : twoElementCardVariants.unactive
-            }
+            variants={calculateVariant(GameModes.local)}
           >
             {typeof firstElement.text === "string" ? (
               <p>{firstElement.text}</p>
@@ -72,14 +82,10 @@ const GameModesCard: FC<Props> = ({ title, firstElement, seccondElement }) => {
           </motion.article>
           <motion.article
             className={styles["card__content__text-container__article"]}
-            onClick={() => setGameMode(GameModes.worldWide)}
+            onClick={() => handleClick(GameModes.worldWide)}
             initial="hidden"
             animate="visible"
-            variants={
-              gameMode === GameModes.worldWide
-                ? twoElementCardVariants.active
-                : twoElementCardVariants.unactive
-            }
+            variants={calculateVariant(GameModes.worldWide)}
           >
             {typeof seccondElement.text === "string" ? (
               <p>{seccondElement.text}</p>

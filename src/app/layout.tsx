@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import "@/lib/watercss.css";
 import "@/app/globals.css";
 
-import GameContextProvider from "@/ui/contexts/Game";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -26,9 +24,7 @@ export default function RootLayout({
           type="image/x-icon"
         />
       </head>
-      <body className={inter.className}>
-        <GameContextProvider>{children}</GameContextProvider>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

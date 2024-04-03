@@ -13,7 +13,7 @@ import Link from "next/link";
 // types & interfaces
 
 // css
-import styles from "@/ui/components/Generic/Footer/Footer.module.css";
+import styles from "@/ui/components/Footer/Footer.module.css";
 
 interface Props {}
 
@@ -21,6 +21,7 @@ const Footer: FC<Props> = ({}) => {
   return (
     <footer className={styles.footer}>
       <div>
+        <h4>More Info</h4>
         <p>
           Proyecto desarrollado por{" "}
           <Link href="https://github.com/panprogramadorgh/cookie-clicker-2">

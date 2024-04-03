@@ -19,3 +19,12 @@ export type GameStateI = [
   GameStateValueI | null,
   Dispatch<SetStateAction<GameStateValueI | null>>
 ];
+
+export interface GadGet {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  maxLevel: number;
+  level: number;
+}

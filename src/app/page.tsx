@@ -1,20 +1,18 @@
 /* Imports */
 
 // react & nextjs
-import { FC, lazy } from "react";
+import { FC, lazy, Suspense } from "react";
 
 // components
-import Phrases from "@/ui/components/Home/Phrases/Phrases";
-import Cookie from "@/ui/components/Cookie/Cookie";
-import Footer from "@/ui/components/Generic/Footer/Footer";
-import Card from "@/ui/components/Home/Card/Card";
-import SwitchElementCard from "@/ui/components/Home/TwoElementsCard/TwoElementsCard";
-import Header from "@/ui/components/Generic/Header/Header";
-const Local = lazy(
-  () => import("@/ui/components/Home/TwoElementsCard/Local/Local")
-);
+import Footer from "@/ui/components/Footer/Footer";
+import Card from "@/ui/components/Card/Card";
+import SwitchElementCard from "@/ui/components/TwoElementsCard/TwoElementsCard";
+import Header from "@/ui/components/Header/Header";
+const Phrases = lazy(() => import("@/ui/components/Phrases/Phrases"));
+const Cookie = lazy(() => import("@/ui/components/Cookie/Cookie"));
+const Local = lazy(() => import("@/ui/components/LocalGameMode/LocalGameMode"));
 const WorldWide = lazy(
-  () => import("@/ui/components/Home/TwoElementsCard/WorldWide/WorldWide")
+  () => import("@/ui/components/WorldWideGameMode/WorldWideGameMode")
 );
 
 // libs
@@ -50,6 +48,7 @@ const Home: FC<Props> = ({}) => {
                 and chips.
               </p>
             }
+            minCardContentHeight={250}
           />
           <SwitchElementCard
             title="Game Modes"

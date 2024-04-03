@@ -1,8 +1,8 @@
 .card {
   margin-top: 50px;
-  min-height: 360px;
   font-size: var(--font-size-large);
   display: flex;
+  min-height: 360px;
   flex-flow: column nowrap;
   justify-content: space-between;
   align-items: center;

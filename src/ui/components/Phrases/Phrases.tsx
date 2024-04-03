@@ -11,13 +11,13 @@ import { FC, useState, useEffect } from "react";
 
 // utils
 import { motion } from "framer-motion";
-import phrases from "@/utils/Home/phrases";
-import { phrasesVariants } from "@/utils/Home/framerMotionVariants";
+import phrases from "@/utils/phrasesArr";
+import { phrasesVariants } from "@/utils/framerMotionVariants";
 
 // types & interfaces
 
 // css
-import styles from "@/ui/components/Home/Phrases/Phrases.module.css";
+import styles from "@/ui/components/Phrases/Phrases.module.css";
 
 function getPhraseByIndex(index: number): (typeof phrases)[0] {
   return phrases[index];
