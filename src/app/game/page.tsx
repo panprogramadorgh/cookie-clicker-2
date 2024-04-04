@@ -40,15 +40,13 @@ const Home: FC = () => {
     return null;
   const cookieSize = calculateCookieSize(windowSize);
   return (
-    <>
-      <div className={styles["cookie-container"]}>
-        <Cookie
-          key={gameContext[0].cookies + calculateCookieSize(windowSize)}
-          size={cookieSize}
-          chipsAmount={{ max: 6, min: 3 }}
-        />
-      </div>
-    </>
+    <div className={styles["cookie-container"]}>
+      <Cookie
+        key={gameContext[0].cookies + calculateCookieSize(windowSize)}
+        size={cookieSize}
+        chipsAmount={{ max: 6, min: 3 }}
+      />
+    </div>
   );
 };
 

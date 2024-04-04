@@ -1,17 +1,14 @@
 .store {
-  min-width: 500px;
-  background-color: var(--background);
-  border-radius: var(--border-radius);
-  padding: 30px;
+  width: 100%;
 }
 
 .store h3 {
   text-align: center;
 }
 
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) {
   .store {
     width: 100%;
     min-width: auto;
   }
-}
+} */

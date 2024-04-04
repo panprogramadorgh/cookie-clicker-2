@@ -4,7 +4,6 @@
 import { FC, lazy, Suspense } from "react";
 
 // components
-import Footer from "@/ui/components/Footer/Footer";
 import Card from "@/ui/components/Card/Card";
 import SwitchElementCard from "@/ui/components/TwoElementsCard/TwoElementsCard";
 import Header from "@/ui/components/Header/Header";
@@ -81,7 +80,6 @@ const Home: FC<Props> = ({}) => {
           />
         </section>
       </main>
-      <Footer />
     </>
   );
 };

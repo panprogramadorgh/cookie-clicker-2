@@ -22,3 +22,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 2. Terminar ventana de compra de gadgets ❌
 3. Colocar informacion de los primeros gadgets ❌
 4. Organizacion del proyecto ❌
+5. Esqueleto de carga para componente monitor ✅

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Footer from "@/ui/components/Footer/Footer";
 import "@/lib/watercss.css";
 import "@/app/globals.css";
 
@@ -24,7 +25,10 @@ export default function RootLayout({
           type="image/x-icon"
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

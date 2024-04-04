@@ -1,0 +1,9 @@
+.tab {
+  background-color: var(--background-alt);
+  padding: 15px;
+  border-radius: var(--border-radius);
+}
+
+.tab.active {
+  background-color: var(--background);
+}

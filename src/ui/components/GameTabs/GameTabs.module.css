@@ -6,9 +6,3 @@
   gap: 20px;
   padding: 0 3%;
 }
-
-.game-tabs a {
-  padding: 20px;
-  background-color: var(--background);
-  border-radius: var(--border-radius);
-}

@@ -6,6 +6,7 @@
 import { FC, useContext } from "react";
 
 // components
+import MonitorSkeleton from "@/ui/components/Monitor/MonitorSkeleton";
 
 // libs
 
@@ -21,7 +22,7 @@ interface Props {}
 
 const Monitor: FC<Props> = ({}) => {
   const gameContext = useContext(GameContext);
-  if (!gameContext || !gameContext[0]) return null;
+  if (!gameContext || !gameContext[0]) return <MonitorSkeleton />;
   return (
     <div className={styles["monitor"]}>
       <div className={`${styles.stat}`.trim()}>

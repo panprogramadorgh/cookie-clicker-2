@@ -124,7 +124,7 @@ const Cookie: FC<Props> = ({ decorative = false, size, chipsAmount }) => {
       whileTap={{
         scale: 0.8,
       }}
-      initial={{ scale: 0.8, width: size, height: size }}
+      initial={{ scale: 0.8, minWidth: size, minHeight: size }}
       animate={{
         scale: 1,
         rotate: 360,

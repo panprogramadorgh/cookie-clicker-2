@@ -26,10 +26,10 @@ const GameLayout: FC<Props> = ({ children }) => {
   return (
     <GameContextProvider>
       <Header />
-      <main className={styles.main}>
+      <main className={styles.main} game-path="true">
         <GameTabs />
         <Monitor />
-        <section>{children}</section>
+        <section className={styles.page}>{children}</section>
       </main>
     </GameContextProvider>
   );

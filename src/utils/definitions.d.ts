@@ -28,3 +28,14 @@ export interface GadGet {
   maxLevel: number;
   level: number;
 }
+
+export interface GameTab {
+  name: string;
+  path: string;
+}
+
+export interface FooterLink {
+  name: string;
+  path: string;
+  icon: React.ReactNode;
+}

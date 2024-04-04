@@ -27,11 +27,6 @@
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 }
 
-::-webkit-scrollbar {
-  width: 2px !important;
-  border-radius: var(--border-radius);
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -47,7 +42,10 @@ body {
   justify-content: space-between;
   margin: 0;
   padding: 0;
+  border: none;
+  outline: none;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 h1 {

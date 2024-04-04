@@ -1,0 +1,12 @@
+.footer-link {
+  background-color: var(--background-body);
+  border-radius: var(--border-radius);
+  padding: 3px;
+  display: inline-flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.footer-link > span {
+  margin-left: 10px;
+}
