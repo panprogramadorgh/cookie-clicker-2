@@ -5,7 +5,7 @@ import { FC } from "react";
 
 // components
 import Link from "next/link";
-import { FooterLink } from "@/utils/definitions";
+import type { FooterLink } from "@/utils/definitions";
 
 // libs
 
